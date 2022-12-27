@@ -31,9 +31,43 @@ namespace StoneShop.Controllers
         [ValidateAntiForgeryToken] // аттрибут-токен для защиты данных 
         public IActionResult Create(Category obj)
         {
-            _dataBase.Category.Add(obj); // добавление записи
-            _dataBase.SaveChanges();     // созранение в БД
-            return RedirectToAction("Index");  // возвращаемся на страниццу со всеми записями
+            if (ModelState.IsValid)
+            {
+                _dataBase.Category.Add(obj); // добавление записи
+                _dataBase.SaveChanges();     // созранение в БД
+                return RedirectToAction("Index");  // возвращаемся на страниццу со всеми записями
+            }
+            return View(obj);
+            
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            if (id == null || id == 0) return NotFound();
+
+            var obj = _dataBase.Category.Find(id);
+            if (obj == null) return NotFound();
+
+            return View(obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Category obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _dataBase.Category.Update(obj);
+                _dataBase.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            return View();
         }
     }
 }
