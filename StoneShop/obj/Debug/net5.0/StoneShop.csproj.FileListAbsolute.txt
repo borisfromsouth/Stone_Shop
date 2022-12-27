@@ -429,3 +429,4 @@ D:\Asp_Projects\Stone_Shop\StoneShop\bin\Debug\net5.0\runtimes\win-arm\lib\net5.
 D:\Asp_Projects\Stone_Shop\StoneShop\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Category\Index.cshtml.g.cs
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\StoneShop.csproj.AssemblyReference.cache
+D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Category\Create.cshtml.g.cs

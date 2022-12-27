@@ -5,8 +5,10 @@
         <div class="col-6">
             <h2 class="text-primary">Category List</h2>
         </div>
-        <div class="col-6">
-            Create New Category
+        <div class="col-6 text-right">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
+                Create New Category
+            </a>
         </div>
     </div>
 
@@ -29,11 +31,11 @@
             <tbody>
                 @foreach(var obj in Model)
                 {
-                <tr>
-                    <td width="50%">@obj.Name</td>
-                    <td width="30%">@obj.DisplayOrder</td>
-                    <td ></td>
-                </tr>
+                    <tr>
+                        <td width="50%">@obj.Name</td>
+                        <td width="30%">@obj.DisplayOrder</td>
+                        <td ></td>
+                    </tr>
                 }
             </tbody>
         </table>
@@ -42,6 +44,4 @@
     {
         <p> No category exists.</p>
     }
-
-
 </div>

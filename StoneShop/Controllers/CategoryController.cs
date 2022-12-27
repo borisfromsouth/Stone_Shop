@@ -19,5 +19,21 @@ namespace StoneShop.Controllers
             IEnumerable<Category> objList = _dataBase.Category;
             return View(objList);
         }
+
+        // операция GET показывает формочку
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // операция Post возвращает данные
+        [HttpPost]
+        [ValidateAntiForgeryToken] // аттрибут-токен для защиты данных 
+        public IActionResult Create(Category obj)
+        {
+            _dataBase.Category.Add(obj); // добавление записи
+            _dataBase.SaveChanges();     // созранение в БД
+            return RedirectToAction("Index");  // возвращаемся на страниццу со всеми записями
+        }
     }
 }
