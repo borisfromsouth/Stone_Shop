@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using StoneShop.Data;
 using StoneShop.Models;
+using StoneShop.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -32,29 +33,42 @@ namespace StoneShop.Controllers
         [HttpGet]
         public IActionResult Upsert(int? id)  // Upsert - общий метод для создания и редактирования
         {
-            IEnumerable<SelectListItem> CategoryDropDown = _dataBase.Category.Select(u => new SelectListItem
+            //IEnumerable<SelectListItem> CategoryDropDown = _dataBase.Category.Select(u => new SelectListItem
+            //{
+            //    Text = u.Name,
+            //    Value = u.Id.ToString()
+            //});
+
+            //ViewBag.CategoryDropDown = CategoryDropDown;  // ViewBag передает данные из контроллера в предстиавоение, но не наоборот
+            //ViewData["CategoryDropDown"] = CategoryDropDown;  // ViewData это словарь, [] - ключ, = - значение
+
+            //Product product = new Product();
+
+
+            // ^^^^^ Вместо кода сверху используем объект ViewModels => ProductVM ^^^^^
+            ProductVM productVM = new ProductVM()
             {
-                Text = u.Name,
-                Value = u.Id.ToString()
-            });
+                Product = new Product(),
+                CategorySelectList = _dataBase.Category.Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                })
+            };
 
-            ViewBag.CategoryDropDown = CategoryDropDown;  // ViewBag передает данные из контроллера в предстиавоение, но не наоборот
-            ViewData["CategoryDropDown"] = CategoryDropDown;  // ViewData это словарь, [] - ключ, = - значение
-
-            Product product = new Product();
             if (id == null) 
             { 
-                return View(product);
+                return View(productVM);
             }
             else
             {
-                product = _dataBase.Product.Find(id);
-                if (product == null)
+                productVM.Product = _dataBase.Product.Find(id);
+                if (productVM.Product == null)
                 {
                     return NotFound();
                 }
 
-                return View(product);
+                return View(productVM);
             }
         }
 

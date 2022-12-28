@@ -435,4 +435,3 @@ D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Category\Edit.
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\User\Edit.cshtml.g.cs
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Product\Index.cshtml.g.cs
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Product\Upsert.cshtml.g.cs
-D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\StoneShop.csproj.AssemblyReference.cache
