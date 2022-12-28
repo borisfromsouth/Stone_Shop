@@ -65,9 +65,16 @@ namespace StoneShop.Controllers
             return View(obj);
         }
 
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int? id)
         {
-            return View();
+            if (id == null || id == 0) return NotFound();
+
+            var obj = _dataBase.Category.Find(id);
+            if (obj == null) return NotFound();
+
+            _dataBase.Category.Remove(obj);
+            _dataBase.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

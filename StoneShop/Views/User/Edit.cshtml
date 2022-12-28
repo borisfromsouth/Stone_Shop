@@ -1,0 +1,89 @@
+﻿@model StoneShop.Models.User
+
+<form method="post">    @*asp-action="Edit"*@
+	@*<input asp-for="Id" hidden />*@
+	<div class="border p-3">
+		@*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+		<div class="form-group row">
+			<h2 class="text-info pl-3">Edit Category</h2>
+		</div>
+		<div class="row">
+			<div class="col-8">
+				<div class="form-group row">
+					<div class="col-4">
+						<label asp-for="FirstName"></label> <!--для связи с именами модели-->
+					</div>
+					<div class="col-8">
+						<input asp-for="FirstName" class="form-control"/>
+						<span asp-validation-for="FirstName" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-4">
+						<label asp-for="SecondName"></label> <!--для связи с именами модели-->
+					</div>
+					<div class="col-8">
+						<input asp-for="SecondName" class="form-control"/>
+						<span asp-validation-for="SecondName" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-4">
+						<label asp-for="ThirdName"></label> <!--для связи с именами модели-->
+					</div>
+					<div class="col-8">
+						<input asp-for="ThirdName" class="form-control"/>
+						<span asp-validation-for="ThirdName" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-4">
+						<label asp-for="Birthday"></label> <!--для связи с именами модели-->
+					</div>
+					<div class="col-8">
+						<input asp-for="Birthday" class="form-control"/>
+						<span asp-validation-for="Birthday" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-4">
+						<label asp-for="Sex"></label> <!--для связи с именами модели-->
+					</div>
+					<div class="col-8">
+						<input asp-for="Sex" class="form-control"/>
+						<span asp-validation-for="Sex" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-4">
+						<label asp-for="Role"></label> <!--для связи с именами модели-->
+					</div>
+					<div class="col-8">
+						<input asp-for="Role" class="form-control"/>
+						<span asp-validation-for="Role" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-8 offset-4 row">
+						<div class="col">
+                           <input type="submit" class="btn btn-info w-100" value="Update"/>
+                        </div>
+                        <div class="col">
+							<a asp-action="Index" class="btn btn-success w-100">
+								<i class="fas fa-sign-out-alt"></i>
+								Back
+							</a>
+                        </div>
+					</div>
+				</div>
+			</div>
+			<div class="col-4">
+				@* Тут что-то будет *@
+			</div>
+		</div>
+	</div>
+</form>
+
+@section Scripts{
+	@{ <partial name="_ValidationScriptsPartial"/> } @* Для моментальной валидации введенных данных *@
+}

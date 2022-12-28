@@ -17,12 +17,15 @@ namespace StoneShop.Models
         [DisplayName("Second Name")]
         public string SecondName { get; set; }
 
+        [Required]
         [DisplayName("Third Name")]
         public string ThirdName { get; set; }
 
+        [Required]
         [DisplayName("Birthday")]
         public DateTime Birthday { get; set; }
 
+        [Required]
         [DisplayName("Sex")]
         public string Sex { get; set; }
 
