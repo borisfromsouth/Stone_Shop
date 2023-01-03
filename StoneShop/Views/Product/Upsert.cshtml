@@ -8,7 +8,7 @@
 	@if(Model.Product.Id != 0)
 	{
 		title = "Edit Product";
-		@*<input asp-for="Id" hidden />*@
+		<input asp-for="Product.Id" hidden />
 	}
 	<div class="border p-3">
 		@*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
@@ -40,7 +40,7 @@
 						<label asp-for="Product.Description"></label>
 					</div>
 					<div class="col-8">
-						<input asp-for="Product.Description" class="form-control"/>
+						<textarea asp-for="Product.Description" class="form-control summernote"></textarea>
 						<span asp-validation-for="Product.Description" class="text-danger"></span>
 					</div>
 				</div>
@@ -64,11 +64,22 @@
 					</div>
 				</div>
 				<div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.ApplicationTypeId"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="Product.ApplicationTypeId" asp-items="@Model.ApplicationTypeSelectList" class="form-control">
+                            <option disabled selected>--Select Application Type--</option>
+                        </select>
+                        <span asp-validation-for="Product.ApplicationTypeId" class="text-danger"></span>
+                    </div>
+                </div>
+				<div class="form-group row">
 					<div class="col-8 offset-4 row">
 						<div class="col">
 							@if(Model.Product.Id != 0)
 							{
-								// upgrade
+								// upgrade   на редактирование проверка карптинки не роаспространяется
 								<input type="submit" class="btn btn-info w-100" value="Update"/>
 							}
 							else
@@ -87,15 +98,22 @@
 				</div>
 			</div>
 			<div class="col-4">
-				@* Тут что-то будет *@
+				@if (Model.Product.Id != 0){
+					<img src="@WebConstants.ImagePath@Model.Product.Image" width="100%" style="border-radius:5px; border:1px solid #bbb"/>
+				}
 			</div>
 		</div>
 	</div>
 </form>
 
 @section Scripts{
-	@{ <partial name="_ValidationScriptsPartial"/> } @* Для моментальной валидации введенных данных *@
+	@{ /*<partial name="_ValidationScriptsPartial"/>*/ } @* Для моментальной валидации введенных данных *@
 	<script>
+		$(document).ready(function() {
+			$('.summernote').summernote({
+				height: 250
+			});
+		});
 		function validateInput(){
 			if(document.getElementById("uploadBox").value == "")
 			{

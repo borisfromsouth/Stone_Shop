@@ -31,10 +31,13 @@
                     </th>
                     @*<th>
                         Image
-                    </th>
+                    </th>*@
                     <th>
                         Category
-                    </th>*@
+                    </th>
+                    <th>
+                        Application Type
+                    </th>
                     <th></th>
                 <tr>
             </thead>
@@ -42,11 +45,13 @@
                 @foreach(var obj in Model)
                 {
                     <tr>
-                        <td width="10%">@obj.Name</td>
+                        <td width="30%">@obj.Name</td>
                         @*<td width="10%">@obj.Description</td>*@
                         <td width="10%">@obj.Price</td>
                         @*<td width="10%">@obj.Image</td>
                         <td width="10%">@obj.Category</td>*@
+                        <td width="20%">@obj.Category.Name</td>
+                        <td width="20%">@obj.ApplicationType.Name</td>
                         <td class ="text-center">
                             <div class="w-75 btn-group" role="group">
                                 <a asp-route-Id="@obj.Id" asp-action="Upsert" class="btn btn-primary mx-2">
