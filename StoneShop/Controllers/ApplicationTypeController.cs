@@ -93,9 +93,8 @@ namespace StoneShop.Controllers
         //}
 
         //POST - DELETE
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeletePost(int? id)
+        //[HttpPost]
+        public IActionResult Delete(int? id)
         {
             var obj = _dataBase.ApplicationType.Find(id);
             if (obj == null)

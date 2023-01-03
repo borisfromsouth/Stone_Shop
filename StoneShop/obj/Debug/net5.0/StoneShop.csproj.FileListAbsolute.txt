@@ -435,4 +435,5 @@ D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Product\Upsert
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\ApplicationType\Index.cshtml.g.cs
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\ApplicationType\Create.cshtml.g.cs
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\ApplicationType\Edit.cshtml.g.cs
-D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\StoneShop.csproj.AssemblyReference.cache
+D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Shared\_IndividualProductCard.cshtml.g.cs
+D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Home\Details.cshtml.g.cs

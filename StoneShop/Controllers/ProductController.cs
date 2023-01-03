@@ -25,15 +25,15 @@ namespace StoneShop.Controllers
 
         public IActionResult Index()
         {
-            //IEnumerable<Product> objList = _dataBase.Product.Include(u => u.Category);
+            IEnumerable<Product> objList = _dataBase.Product.Include(u => u.Category).Include(u => u.ApplicationType);  // жадная загрузка (быстрая и экономная)
 
-            //Слишком много обращений к БД
-            IEnumerable<Product> objList = _dataBase.Product;
-            foreach (var obj in objList)
-            {
-                obj.Category = _dataBase.Category.FirstOrDefault(u => u.Id == obj.CategoryId);
-                obj.ApplicationType = _dataBase.ApplicationType.FirstOrDefault(u => u.Id == obj.ApplicationTypeId);
-            }
+            ////Слишком много обращений к БД
+            //IEnumerable<Product> objList = _dataBase.Product;
+            //foreach (var obj in objList)
+            //{
+            //    obj.Category = _dataBase.Category.FirstOrDefault(u => u.Id == obj.CategoryId);
+            //    obj.ApplicationType = _dataBase.ApplicationType.FirstOrDefault(u => u.Id == obj.ApplicationTypeId);
+            //}
 
             return View(objList);
         }

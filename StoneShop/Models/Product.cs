@@ -11,6 +11,8 @@ namespace StoneShop.Models
         [Required]
         public string Name { get; set; }
 
+        public string ShortDescription { get; set; }
+
         public string Description { get; set; }
 
         [Range(1, int.MaxValue)]
