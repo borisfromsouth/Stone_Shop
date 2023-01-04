@@ -37,25 +37,61 @@ namespace StoneShop.Controllers
 
         public IActionResult Details(int id)
         {
+            List<ShoppingCart> shoppingCartList = new List<ShoppingCart>();
+            if (HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WebConstants.SessionCart) != null &&  // проверка на заполненность корзины
+               HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WebConstants.SessionCart).Count() > 0)
+            {
+                shoppingCartList = HttpContext.Session.Get<List<ShoppingCart>>(WebConstants.SessionCart); // если что-то есть то забираем на обработку 
+            }
+
+
             DetailsVM detailsVM = new DetailsVM()
             {
                 Product = _bataBase.Product.Include(u => u.Category).Include(u => u.ApplicationType).Where(u => u.Id == id).FirstOrDefault(),
                 ExistsInCart = false
             };
+
+            foreach (var item in shoppingCartList)
+            {
+                if (item.ProductId == id)
+                {
+                    detailsVM.ExistsInCart = true;
+                }
+            }
+
             return View(detailsVM);
         }
 
         [HttpPost,ActionName("Details")]
         public IActionResult DetailsPost(int id)
         {
-            List<ShoppingCart> shoppingCart = new List<ShoppingCart>();
+            List<ShoppingCart> shoppingCartList = new List<ShoppingCart>();
             if(HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WebConstants.SessionCart) != null &&  // проверка на заполненность корзины
                HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WebConstants.SessionCart).Count() > 0 )
             {
-                shoppingCart = HttpContext.Session.Get<List<ShoppingCart>>(WebConstants.SessionCart); // если что-то есть то забираем на обработку 
+                shoppingCartList = HttpContext.Session.Get<List<ShoppingCart>>(WebConstants.SessionCart); // если что-то есть то забираем на обработку 
             }
-            shoppingCart.Add(new ShoppingCart { ProductId = id });  // добавляем товар в корзину
-            HttpContext.Session.Set(WebConstants.SessionCart, shoppingCart);  // сохраняем корзину в сессии
+            shoppingCartList.Add(new ShoppingCart { ProductId = id });  // добавляем товар в корзину
+            HttpContext.Session.Set(WebConstants.SessionCart, shoppingCartList);  // сохраняем корзину в сессии
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult RemoveFromCart (int id)
+        {
+            List<ShoppingCart> shoppingCartList = new List<ShoppingCart>();
+            if (HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WebConstants.SessionCart) != null &&  
+               HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WebConstants.SessionCart).Count() > 0)
+            {
+                shoppingCartList = HttpContext.Session.Get<List<ShoppingCart>>(WebConstants.SessionCart); 
+            }
+
+            var itemToRemove = shoppingCartList.SingleOrDefault(u => u.ProductId == id);  // вытягиваем нужный объект
+            if (itemToRemove != null)
+            {
+                shoppingCartList.Remove(itemToRemove);  // удаляем объект если не пустой 
+            }
+
+            HttpContext.Session.Set(WebConstants.SessionCart, shoppingCartList);  // сохраняем корзину в сессии
             return RedirectToAction(nameof(Index));
         }
 
