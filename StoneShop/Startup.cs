@@ -25,9 +25,13 @@ namespace StoneShop
         public void ConfigureServices(IServiceCollection services)  // добавляет сервисы в контейнер
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddHttpContextAccessor();
+            services.AddSession(Options => { 
+                Options.IdleTimeout = TimeSpan.FromMinutes(10);
+                Options.Cookie.HttpOnly = true;
+                Options.Cookie.IsEssential = true;
+            });
             services.AddControllersWithViews();
-            services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)  // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,10 +47,9 @@ namespace StoneShop
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
