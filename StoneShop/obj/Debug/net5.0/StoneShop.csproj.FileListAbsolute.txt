@@ -484,3 +484,5 @@ D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Areas\Identity\Pages
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
+D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Cart\Summary.cshtml.g.cs
