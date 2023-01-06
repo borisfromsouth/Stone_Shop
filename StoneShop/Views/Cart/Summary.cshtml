@@ -11,7 +11,7 @@
                         Order Summary
                     </div>
                     <div class="col-6 text-right">
-                        <a class="btn btn-outline-info btn-sm">Back to Cart</a>
+                        <a asp-action="Index" class="btn btn-outline-info btn-sm">Back to Cart</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -20,7 +20,7 @@
                             <div class="col-12 col-lg-7 pb-4">
                                 <div class="row">
                                     <h4 class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="text-info">PickUp Details:</span>
+                                        <span class="text-info">Customer Details:</span>
                                     </h4>
                                 </div>
                                 <div class="row my-1">
@@ -28,8 +28,8 @@
                                         <label>Name</label>
                                     </div>
                                     <div class="col-9">
-                                        <input type="text" class="form-control" />
-
+                                        <input asp-for="User.FullName" type="text" class="form-control" />
+                                        <span asp-validation-for="User.FullName" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="row my-1">
@@ -37,8 +37,8 @@
                                         <label>Phone</label>
                                     </div>
                                     <div class="col-9">
-                                        <input type="text" class="form-control" />
-                                        <span class="text-danger"></span>
+                                        <input asp-for="User.PhoneNumber" type="text" class="form-control" />
+                                        <span asp-validation-for="User.PhoneNumber" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="row my-1">
@@ -46,8 +46,8 @@
                                         <label>Email</label>
                                     </div>
                                     <div class="col-9">
-                                        <input type="text" class="form-control" />
-                                        <span class="text-danger"></span>
+                                        <input asp-for="User.Email" type="text" class="form-control" />
+                                        <span asp-validation-for="User.Email" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
@@ -56,14 +56,20 @@
                                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                                         <span class="text-info">Order Summary:</span>
                                     </h4>
-                                    <ul class="list-group mb-3">
-                                        <li class="list-group-item d-flex justify-content-between">
-                                            <div>
-                                                <h6 class="my-0">Product Name</h6>
-                                                <small class="text-muted">Price per Sqft: $$$$</small>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    @foreach (var obj in Model.ProductList)
+                                    {
+                                        <ul class="list-group mb-3">
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <div>
+                                                    <h6 class="my-0">@obj.Name</h6>
+                                                    <small class="text-muted">Price per Sqft: $@obj.Price</small>
+                                                </div>
+                                                <div class="col-6 text-center">@* col-md-2  py-2*@
+                                                    <img src="@WebConstants.ImagePath@obj.Image" class="rounded" width="100%" />
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -80,7 +86,6 @@
         </div>
     </div>
 </form>
-
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />

@@ -442,7 +442,6 @@ D:\Asp_Projects\Stone_Shop\StoneShop\bin\Debug\net5.0\Microsoft.Extensions.FileP
 D:\Asp_Projects\Stone_Shop\StoneShop\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 D:\Asp_Projects\Stone_Shop\StoneShop\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\staticwebassets\StoneShop.StaticWebAssets.xml
-D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\StoneShop.csproj.AssemblyReference.cache
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\ConfirmEmailChange.cshtml.g.cs
@@ -486,3 +485,4 @@ D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Areas\Identity\Pages
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Cart\Summary.cshtml.g.cs
+D:\Asp_Projects\Stone_Shop\StoneShop\bin\Debug\net5.0\Mailjet.Client.dll

@@ -67,7 +67,7 @@ namespace StoneShop.Controllers
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            var userId = User.FindFirstValue(ClaimTypes.Name);
+            //var userId = User.FindFirstValue(ClaimTypes.Name);
 
             List<ShoppingCart> shoppingCartList = new List<ShoppingCart>();
             if (HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WebConstants.SessionCart) != null
@@ -82,7 +82,8 @@ namespace StoneShop.Controllers
 
             ProductUserVM productUserVM = new ProductUserVM()
             {
-                User = _database.User.FirstOrDefault(u => u.Id == userId)
+                User = _database.User.FirstOrDefault(u => u.Id == claim.Value),
+                ProductList = productList
             };
 
             return View(productUserVM);
