@@ -68,7 +68,7 @@ namespace StoneShop.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            if (!await _roleManager.RoleExistsAsync(WebConstants.AdminRole))  // если роли админа нету в БД, то создаем
+            if (!await _roleManager.RoleExistsAsync(WebConstants.AdminRole))  // если роли админа нету в БД, то создаем  // отрабатывает только один раз один раз при создании БД
             {
                 await _roleManager.CreateAsync(new IdentityRole(WebConstants.AdminRole));  // создать роль админа в БД
                 await _roleManager.CreateAsync(new IdentityRole(WebConstants.CustomerRole));  // создать роль пользователя в БД

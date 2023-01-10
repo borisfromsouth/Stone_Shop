@@ -44,7 +44,7 @@ namespace StoneShop.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            if (id == null || id == 0) return NotFound();
+            if (/*id == null ||*/ id == 0) return NotFound();
 
             var obj = _dataBase.Category.Find(id);
             if (obj == null) return NotFound();

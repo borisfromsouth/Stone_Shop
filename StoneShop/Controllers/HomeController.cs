@@ -18,13 +18,11 @@ namespace StoneShop.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _bataBase;
-        private readonly Service _service;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext bataBase, Service service)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext bataBase)
         {
             _logger = logger;
             _bataBase = bataBase;
-            _service = service;
         }
 
         public IActionResult Index()
@@ -34,19 +32,7 @@ namespace StoneShop.Controllers
                 Products = _bataBase.Product.Include(u => u.Category).Include(u => u.ApplicationType),
                 Categorys = _bataBase.Category
             };
-            return View(/*homeVM*/);
-        }
-
-        public IActionResult SendEmailDefault()
-        {
-            _service.SendEmailDefault();
-            return RedirectToAction("Index");
-        }
-
-        public IActionResult SendEmailCustom()
-        {
-            _service.SendEmailCustom();
-            return RedirectToAction("Index");
+            return View(homeVM);
         }
 
         public IActionResult Details(int id)

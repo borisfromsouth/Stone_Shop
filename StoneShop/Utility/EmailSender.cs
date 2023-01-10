@@ -2,6 +2,9 @@
 using Mailjet.Client.Resources;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace StoneShop.Utility
@@ -15,46 +18,26 @@ namespace StoneShop.Utility
 
         public async Task Execute(string email, string subject, string body)
         {
-            MailjetClient client = new MailjetClient("1849179c639712b25373747961d13956", "069c8c5c0158d0d29c5a3ac900c9dae6")
+            try
             {
-                //Version = ApiVersion.V3_1,
-            };
-            MailjetRequest request = new MailjetRequest
-            {
-                Resource = Send.Resource,
-            }
-             .Property(Send.Messages, new JArray {
-             new JObject {
-             {
-               "From", new JObject {
-                {"Email", "ben.spark90@yahoo.com"},
-                {"Name", "Ben"}
-               }}, {
-               "To",
-               new JArray {
-                new JObject {
-                 {
-                  "Email",
-                  email
-                 }, {
-                  "Name",
-                  "DotNetMastery"
-                 }
+                MailMessage message = new MailMessage();
+                message.IsBodyHtml = true;
+                message.From = new MailAddress("testdriveborisenko@yandex.ru", "Alex"); // от кого
+                message.To.Add(new MailAddress(email));  // список адресов кому отправляется письмо balabin.nv@gmail.com
+                message.Subject = subject;  // тема письма
+                message.Body = body;  // сообщение в письме (в данном случае html-код, потому что message.IsBodyHtml = true;)  
+                //message.Attachments.Add(new Attachment("video.mp4"));  //... путь к файлу ... пркрепленный файл к письму
+
+                using (SmtpClient client = new SmtpClient("smtp.yandex.ru"))
+                {
+                    client.Credentials = new NetworkCredential("testdriveborisenko@yandex.ru", "fakkbvvvsbmzxoip");  // пароль: fakkbvvvsbmzxoip
+                    client.Port = 587;
+                    client.EnableSsl = true;
+
+                    client.Send(message);
                 }
-               }
-              }, {
-               "Subject",
-               subject
-              }, {
-               "HTMLPart",
-               body
-              }
-             }
-             });
-            await client.PostAsync(request);
+            }
+            catch (Exception ex) { }
         }
     }
 }
-
-// API key: 922338801F5627C217E4DBA1C3D51EB4D5D130C5DDE1AFDF270B717F090CF28ADBDFBB116A1818514D169F099EE8E0BD
-// SMTP Password: 0DB8AD6646EF18CDCE9210D06C8F311956DA
