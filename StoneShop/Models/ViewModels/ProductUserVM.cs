@@ -10,6 +10,6 @@ namespace StoneShop.Models.ViewModels
         }
 
         public User User { get; set; }
-        public IEnumerable<Product> ProductList { get; set; }
+        public IList<Product> ProductList { get; set; }
     }
 }

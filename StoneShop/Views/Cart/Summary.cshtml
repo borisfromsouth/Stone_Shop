@@ -56,20 +56,22 @@
                                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                                         <span class="text-info">Order Summary:</span>
                                     </h4>
-                                    @foreach (var obj in Model.ProductList)
-                                    {
-                                        <ul class="list-group mb-3">
+                                    <ul class="list-group mb-3">
+                                        @for (int i = 0; i < Model.ProductList.Count(); i++)@*@foreach (var obj in Model.ProductList)*@
+                                        {
+                                            <input type="hidden" asp-for="@Model.ProductList[i].Id"/>
+                                            <input type="hidden" asp-for="@Model.ProductList[i].Name"/>
                                             <li class="list-group-item d-flex justify-content-between">
                                                 <div>
-                                                    <h6 class="my-0">@obj.Name</h6>
-                                                    <small class="text-muted">Price per Sqft: $@obj.Price</small>
+                                                    <h6 class="my-0">@Model.ProductList[i].Name</h6>
+                                                    <small class="text-muted">Price per Sqft: $@Model.ProductList[i].Price</small>
                                                 </div>
                                                 <div class="col-6 text-center">@* col-md-2  py-2*@
-                                                    <img src="@WebConstants.ImagePath@obj.Image" class="rounded" width="100%" />
+                                                    <img src="@WebConstants.ImagePath@Model.ProductList[i].Image" class="rounded" width="100%" />
                                                 </div>
                                             </li>
-                                        </ul>
-                                    }
+                                        }
+                                    </ul>
                                 </div>
                             </div>
                         </div>

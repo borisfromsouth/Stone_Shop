@@ -1,6 +1,7 @@
 ﻿using Mailjet.Client;
 using Mailjet.Client.Resources;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Net;
@@ -11,6 +12,15 @@ namespace StoneShop.Utility
 {
     public class EmailSender : IEmailSender
     {
+        private readonly IConfiguration _configuration;
+
+        public EmailSettings _emailSettings { get; set; }
+
+        public EmailSender(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             return Execute(email, subject, htmlMessage);
@@ -18,11 +28,12 @@ namespace StoneShop.Utility
 
         public async Task Execute(string email, string subject, string body)
         {
+            _emailSettings = _configuration.GetSection("EmailConfirm").Get<EmailSettings>();
             try
             {
                 MailMessage message = new MailMessage();
                 message.IsBodyHtml = true;
-                message.From = new MailAddress("testdriveborisenko@yandex.ru", "Alex"); // от кого
+                message.From = new MailAddress(_emailSettings.SmtpServer, "Alex"); // от кого
                 message.To.Add(new MailAddress(email));  // список адресов кому отправляется письмо balabin.nv@gmail.com
                 message.Subject = subject;  // тема письма
                 message.Body = body;  // сообщение в письме (в данном случае html-код, потому что message.IsBodyHtml = true;)  
@@ -30,7 +41,7 @@ namespace StoneShop.Utility
 
                 using (SmtpClient client = new SmtpClient("smtp.yandex.ru"))
                 {
-                    client.Credentials = new NetworkCredential("testdriveborisenko@yandex.ru", "fakkbvvvsbmzxoip");  // пароль: fakkbvvvsbmzxoip
+                    client.Credentials = new NetworkCredential(_emailSettings.SmtpServer, _emailSettings.SecretKey);  // пароль: fakkbvvvsbmzxoip
                     client.Port = 587;
                     client.EnableSsl = true;
 

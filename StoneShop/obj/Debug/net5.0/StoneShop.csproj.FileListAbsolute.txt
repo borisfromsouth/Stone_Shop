@@ -486,3 +486,4 @@ D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Shared\_LoginP
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
 D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Cart\Summary.cshtml.g.cs
 D:\Asp_Projects\Stone_Shop\StoneShop\bin\Debug\net5.0\Mailjet.Client.dll
+D:\Asp_Projects\Stone_Shop\StoneShop\obj\Debug\net5.0\Razor\Views\Cart\InquiryConfiguration.cshtml.g.cs

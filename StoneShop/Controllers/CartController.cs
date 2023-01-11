@@ -24,7 +24,7 @@ namespace StoneShop.Controllers
             _database = database;
         }
 
-        public IActionResult Index()
+        public IActionResult Index()  // список всех товаров
         {
             List<ShoppingCart> shoppingCartList = new List<ShoppingCart>();
             if (HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WebConstants.SessionCart) != null
@@ -83,10 +83,26 @@ namespace StoneShop.Controllers
             ProductUserVM productUserVM = new ProductUserVM()
             {
                 User = _database.User.FirstOrDefault(u => u.Id == claim.Value),
-                ProductList = productList
+                ProductList = productList.ToList()
             };
 
             return View(productUserVM);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Summary")]
+        public IActionResult SummaryPost(ProductUserVM productUserVM)
+        {
+            return RedirectToAction("InquiryConfiguration");
+        }
+
+        public IActionResult InquiryConfiguration()
+        {
+            HttpContext.Session.Clear();
+
+            return View();
+        }
+
     }
 }
