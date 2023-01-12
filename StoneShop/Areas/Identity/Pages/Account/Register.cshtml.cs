@@ -92,7 +92,6 @@ namespace StoneShop.Areas.Identity.Pages.Account
                 {
                     if (User.IsInRole(WebConstants.AdminRole)) // если текущий пользователь - админ то можно создать нового админа
                     {
-                        
                         await _userManager.AddToRoleAsync(user, WebConstants.AdminRole);
                     }
                     else
@@ -119,7 +118,15 @@ namespace StoneShop.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        //if (!User.IsInRole(WebConstants.AdminRole))  // если админ уже был зареган то мы ничего не делаем
+                        //{
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                        //}
+                        //else
+                        //{
+                        //    return RedirectToAction("Index");
+                        //}
+                        
                         return LocalRedirect(returnUrl);
                     }
                 }

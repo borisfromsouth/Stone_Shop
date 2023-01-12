@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StoneShop.Data;
 using StoneShop.Models;
 using System.Collections.Generic;
 
 namespace StoneShop.Controllers
 {
+    [Authorize(Roles = WebConstants.AdminRole)]
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _dataBase;
