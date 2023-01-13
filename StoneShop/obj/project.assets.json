@@ -2789,6 +2789,19 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "StoneShop_Utility/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.UI": "5.0.17"
+        },
+        "compile": {
+          "bin/placeholder/StoneShop_Utility.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/StoneShop_Utility.dll": {}
+        }
       }
     }
   },
@@ -9147,6 +9160,11 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "StoneShop_Utility/1.0.0": {
+      "type": "project",
+      "path": "../StoneShop_Utility/StoneShop_Utility.csproj",
+      "msbuildProject": "../StoneShop_Utility/StoneShop_Utility.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -9158,7 +9176,8 @@
       "Microsoft.EntityFrameworkCore >= 5.0.17",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.17",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.17",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2",
+      "StoneShop_Utility >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -9187,7 +9206,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Asp_Projects\\Stone_Shop\\StoneShop_Utility\\StoneShop_Utility.csproj": {
+              "projectPath": "D:\\Asp_Projects\\Stone_Shop\\StoneShop_Utility\\StoneShop_Utility.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

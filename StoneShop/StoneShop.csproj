@@ -24,4 +24,8 @@
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StoneShop_Utility\StoneShop_Utility.csproj" />
+  </ItemGroup>
+
 </Project>

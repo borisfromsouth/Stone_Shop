@@ -1,0 +1,11 @@
+D:\Asp_Projects\Stone_Shop\StoneShop_Utility\obj\Debug\net5.0\StoneShop_Utility.GeneratedMSBuildEditorConfig.editorconfig
+D:\Asp_Projects\Stone_Shop\StoneShop_Utility\obj\Debug\net5.0\StoneShop_Utility.AssemblyInfoInputs.cache
+D:\Asp_Projects\Stone_Shop\StoneShop_Utility\obj\Debug\net5.0\StoneShop_Utility.AssemblyInfo.cs
+D:\Asp_Projects\Stone_Shop\StoneShop_Utility\obj\Debug\net5.0\StoneShop_Utility.csproj.CoreCompileInputs.cache
+D:\Asp_Projects\Stone_Shop\StoneShop_Utility\bin\Debug\net5.0\StoneShop_Utility.deps.json
+D:\Asp_Projects\Stone_Shop\StoneShop_Utility\bin\Debug\net5.0\StoneShop_Utility.dll
+D:\Asp_Projects\Stone_Shop\StoneShop_Utility\bin\Debug\net5.0\ref\StoneShop_Utility.dll
+D:\Asp_Projects\Stone_Shop\StoneShop_Utility\bin\Debug\net5.0\StoneShop_Utility.pdb
+D:\Asp_Projects\Stone_Shop\StoneShop_Utility\obj\Debug\net5.0\StoneShop_Utility.dll
+D:\Asp_Projects\Stone_Shop\StoneShop_Utility\obj\Debug\net5.0\ref\StoneShop_Utility.dll
+D:\Asp_Projects\Stone_Shop\StoneShop_Utility\obj\Debug\net5.0\StoneShop_Utility.pdb
